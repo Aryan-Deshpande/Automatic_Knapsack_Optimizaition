@@ -1,4 +1,4 @@
-from itertools import combinations
+import itertools
 
 def inp(n,weight,value,max):
 
@@ -13,7 +13,13 @@ def inp(n,weight,value,max):
         value.append(el)
     return  (n,weight,value,max)
 
-def combinations():
+def combinations(n):
+    a = list(range(1,n+1))
+    b = []
+    for i in range(1, n+1):
+        for subset in itertools.combinations(a,i):
+            b.append(subset)
+    print(b)
 
 
 '''weight = [6, 4, 10, 6]
@@ -72,6 +78,7 @@ if __name__ == "__main__":
     max = int(input())
 
     inp(n, weight, value, max)
+    combinations(n)
 
 
 
