@@ -13,13 +13,22 @@ def inp(n,weight,value,max):
         value.append(el)
     return  (n,weight,value,max)
 
-def combinations(n):
+def combinations(n, b):
     a = list(range(1,n+1))
-    b = []
     for i in range(1, n+1):
         for subset in itertools.combinations(a,i):
             b.append(subset)
     print(b)
+
+def logic(n, b, weight, value):
+    tw = []
+    tv = []
+    for x in b:
+        for i in range(0, n):
+            tw.append(weight[(x[i]) - 1])
+            tv.append(value[(x[i]) - 1])
+    print(tw)
+    print(tv)
 
 
 '''weight = [6, 4, 10, 6]
@@ -70,6 +79,7 @@ for i in range(len(tw)):
 if __name__ == "__main__":
     weight = []
     value = []
+    b = []
     max = 0
     print("Enter the no. of elements:")
     n=int(input())
@@ -78,7 +88,8 @@ if __name__ == "__main__":
     max = int(input())
 
     inp(n, weight, value, max)
-    combinations(n)
+    combinations(n, b)
+    logic(n,weight, value)
 
 
 
