@@ -20,15 +20,41 @@ def combinations(n, b):
             b.append(subset)
     print(b)
 
-def logic(n, b, weight, value):
+def map(i,weight,w,tw,tv,v):
+    for j in i:
+        w = int(w) + int(weight[j-1])
+        v = int(v) + int(value[j-1])
+    tw.append(w)
+    tv.append(v)
+
+def logic(weight,w,tw,v,tv,b):
+    for i in b:
+        map(i,weight,w,tw,tv,v)
+
+def ans(tw,tv,max,Ans):
+    temp = 0
+
+    for i in range(len(tw)):
+        if temp == tw[i]:
+            Ans.append(i)
+            print(f'The max possible weight is: {tw[i]}, and the value is {tv[i]}')
+        else:
+            for i in tw:
+                if i >= temp and i <= max:
+                    temp = i
+
+
+'''def logic(n, b, weight, value):
     tw = []
     tv = []
+    z = len(b)
     for x in b:
-        for i in range(0, n):
-            tw.append(weight[(x[i]) - 1])
-            tv.append(value[(x[i]) - 1])
+        for z in range(0, n):
+            for i in range(0, n):
+                tw.append(weight[(x[len(b)[i]]) - 1])
+                tv.append(value[(x[len(b)[i]]) - 1])
     print(tw)
-    print(tv)
+    print(tv)'''
 
 
 '''weight = [6, 4, 10, 6]
@@ -81,6 +107,13 @@ if __name__ == "__main__":
     value = []
     b = []
     max = 0
+    Ans = []
+
+    tw=[]
+    tv=[]
+    w=0
+    v=0
+
     print("Enter the no. of elements:")
     n=int(input())
 
@@ -89,7 +122,34 @@ if __name__ == "__main__":
 
     inp(n, weight, value, max)
     combinations(n, b)
-    logic(n,weight, value)
+    logic(weight,w,tw,v,tv,b)
+    ans(tw,tv,max,Ans)
+    print(tw)
+    print(tv)
 
+'''
 
+import itertools
+w=[4,5,2,9,6,7]
+v=[5,6,7,2,1]
 
+c=0
+s=0
+a = list(range(1,5))
+for i in range(1, 5):
+    for subset in itertools.combinations(a,i):
+        b.append(subset)
+#print(b)
+
+s=0
+tw=0
+b=[]
+w=[4,5,2,9,6,7]
+def map(i,w,s,tw):
+    for j in i:
+        s = s + w[j-1]
+    tw.append(s)
+
+for i in b:
+    map(i,w,s,tw)
+'''
