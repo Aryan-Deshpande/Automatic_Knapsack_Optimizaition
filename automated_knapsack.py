@@ -2,12 +2,12 @@ import itertools
 
 def inp(n,weight,value,max):
 
-    print("Enter the values for the weight:")
+    print("Enter the weight for each of the elements:")
     for i in range(n):
         el = input()
         weight.append(el)
 
-    print("Enter the values for the value:")
+    print("Enter the values for each of the elements")
     for i in range(n):
         el = input()
         value.append(el)
@@ -49,7 +49,6 @@ if __name__ == "__main__":
     b = []
     max = 0
     Ans = []
-
     tw=[]
     tv=[]
     w=0
@@ -58,7 +57,7 @@ if __name__ == "__main__":
     print("Enter the no. of elements:")
     n=int(input())
 
-    print("Enter the max weight")
+    print("Enter the maximum weight weight")
     max = int(input())
 
     inp(n, weight, value, max)
